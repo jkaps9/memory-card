@@ -6,41 +6,33 @@ function List() {
 
   useEffect(() => {
     console.log("fetching list of all people");
-    fetch("https://swapi.tech/api/people?page=1&limit=1000")
+    fetch("https://swapi.tech/api/people?page=1&limit=100")
       .then((response) => response.json())
       .then((json) => setAllPeople(json))
       .catch((error) => console.error(error));
   }, []);
 
-  const [people, setPeople] = useState([]);
-  let count = 0;
+  let randNumbers = [];
 
-  useEffect(() => {
-    function addPerson(person) {
-      setPeople([...people, person]);
+  while (randNumbers.length < 12) {
+    let rand = Math.floor(Math.random() * 81) + 1;
+    if (randNumbers.indexOf(rand) < 0) {
+      randNumbers.push(rand);
     }
-
-    console.log(`fetching ${count++} person...`);
-    if (allPeople) {
-      fetch(allPeople.results[0].url)
-        .then((response) => response.json())
-        .then((json) => addPerson(json))
-        .catch((error) => console.error(error));
-    }
-  }, [allPeople, count, people]);
+  }
 
   return (
     <div>
-      {/* {allPeople ? (
-        <pre>{JSON.stringify(allPeople, null, 2)}</pre>
+      {allPeople ? (
+        <ul>
+          {allPeople.results
+            .filter((person) => randNumbers.indexOf(Number(person.uid)) >= 0)
+            .map((person) => (
+              <li key={person.uid}>{person.name}</li>
+            ))}
+        </ul>
       ) : (
         "Loading..."
-      )} */}
-      {/* {allPeople ? <p>{allPeople.results[0].properties.name}</p> : 'No name'} */}
-      {people.length > 0 ? (
-        <p>{people[0].result.properties.name}</p>
-      ) : (
-        "No name"
       )}
     </div>
   );
