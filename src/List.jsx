@@ -1,33 +1,39 @@
 import { useState, useEffect } from "react";
-import allPeople from "./assets/data.json";
+// import allPeople from "./assets/data.json";
 import Card from "./Card";
 
 function List() {
-  // const [allPeople, setAllPeople] = useState(null);
+  const [peopleList, setPeopleList] = useState(null);
 
-  // useEffect(() => {
-  //   console.log("fetching list of all people");
-  //   fetch("https://swapi.tech/api/people?page=1&limit=100")
-  //     .then((response) => response.json())
-  //     .then((json) => setAllPeople(json))
-  //     .catch((error) => console.error(error));
-  // }, []);
+  useEffect(() => {
+    let randNumbers = [];
 
-  let randNumbers = [];
-
-  while (randNumbers.length < 12) {
-    let rand = Math.floor(Math.random() * 81) + 1;
-    if (randNumbers.indexOf(rand) < 0) {
-      randNumbers.push(rand);
+    while (randNumbers.length < 12) {
+      let rand = Math.floor(Math.random() * 81) + 1;
+      if (randNumbers.indexOf(rand) < 0) {
+        randNumbers.push(rand);
+      }
     }
-  }
+
+    console.log("fetching list of all people");
+    fetch("https://swapi.tech/api/people?page=1&limit=100")
+      .then((response) => response.json())
+      .then((json) =>
+        setPeopleList(
+          json.results.filter(
+            (person) => randNumbers.indexOf(Number(person.uid)) >= 0
+          )
+        )
+      )
+      .catch((error) => console.error(error));
+  }, []);
 
   return (
     <div className="card-container">
-      {allPeople
-        ? allPeople.results
-            .filter((person) => randNumbers.indexOf(Number(person.uid)) >= 0)
-            .map((person) => <Card name={person.name} key={person.uid} />)
+      {peopleList
+        ? peopleList.map((person) => (
+            <Card name={person.name} key={person.uid} />
+          ))
         : "Loading..."}
     </div>
   );
