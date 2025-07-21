@@ -1,7 +1,16 @@
 .imgPlaceholder {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   background-color: rgb(63, 123, 52);
+}
+
+.card-container {
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  width: 100%;
 }
 
 .card {
@@ -12,5 +21,5 @@
   gap: 12px;
   border: 1px solid wheat;
   color: wheat;
-  padding: 1em;
+  padding: 0;
 }

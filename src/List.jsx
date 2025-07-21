@@ -23,18 +23,12 @@ function List() {
   }
 
   return (
-    <div>
-      {allPeople ? (
-        <ul>
-          {allPeople.results
+    <div className="card-container">
+      {allPeople
+        ? allPeople.results
             .filter((person) => randNumbers.indexOf(Number(person.uid)) >= 0)
-            .map((person) => (
-              <Card name={person.name} key={person.uid} />
-            ))}
-        </ul>
-      ) : (
-        "Loading..."
-      )}
+            .map((person) => <Card name={person.name} key={person.uid} />)
+        : "Loading..."}
     </div>
   );
 }
