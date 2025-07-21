@@ -1,16 +1,17 @@
-import { useState } from 'react'
-import './App.css'
-import List from './list.jsx'
+import { useState } from "react";
+import "./App.css";
+import List from "./List.jsx";
 
 function App() {
-
   return (
     <>
-	  <h1>Memory Game</h1>
-	  <p>Select a card to get a point, but don&apos;t select the same one twice</p>
-	  <List />
+      <h1>Memory Game</h1>
+      <p>
+        Select a card to get a point, but don&apos;t select the same one twice
+      </p>
+      <List />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
