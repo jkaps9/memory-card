@@ -9,22 +9,18 @@ function List() {
     let randNumbers = [];
 
     while (randNumbers.length < 12) {
-      let rand = Math.floor(Math.random() * 81) + 1;
+      let rand = Math.floor(Math.random() * 952);
       if (randNumbers.indexOf(rand) < 0) {
         randNumbers.push(rand);
       }
     }
 
     console.log("fetching list of all people");
-    fetch("https://swapi.tech/api/people?page=1&limit=100")
+    fetch(
+      "https://starwars-databank-server.vercel.app/api/v1/characters?page=1&limit=952"
+    )
       .then((response) => response.json())
-      .then((json) =>
-        setPeopleList(
-          json.results.filter(
-            (person) => randNumbers.indexOf(Number(person.uid)) >= 0
-          )
-        )
-      )
+      .then((json) => setPeopleList(json.data))
       .catch((error) => console.error(error));
   }, []);
 
@@ -32,7 +28,7 @@ function List() {
     <div className="card-container">
       {peopleList
         ? peopleList.map((person) => (
-            <Card name={person.name} key={person.uid} />
+            <Card imgUrl={person.image} name={person.name} key={person._id} />
           ))
         : "Loading..."}
     </div>
