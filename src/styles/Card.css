@@ -10,7 +10,7 @@
 .card-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));
-  justify-content: center;
+  justify-items: center;
   gap: 24px;
   width: 100%;
 }
@@ -28,6 +28,7 @@
   padding: 0;
   font-size: 1.2em;
   max-width: 225px;
+  width: 100%;
 }
 
 .card:hover {
