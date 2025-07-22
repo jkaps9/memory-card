@@ -35,3 +35,11 @@
   background-color: var(--color-pale-orange);
   border-color: var(--color-pale-orange);
 }
+
+.score-container {
+  margin: 12px 0 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 36px;
+}

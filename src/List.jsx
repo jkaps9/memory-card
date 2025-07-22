@@ -32,7 +32,7 @@ function List() {
         setBestScore(currentScore);
       }
       setCurrentScore(0);
-      resetList;
+      resetList();
     }
   }
 
@@ -52,7 +52,7 @@ function List() {
   }
 
   function resetAll() {
-    resetList;
+    resetList();
     setCurrentScore(0);
     setBestScore(0);
   }
@@ -60,8 +60,10 @@ function List() {
   return (
     <>
       <div className="score-container">
-        <div>Score: {currentScore}</div>
-        <div>Best Score: {bestScore}</div>
+        <div style={{ textAlign: "start" }}>
+          <div>Score: {currentScore}</div>
+          <div>Best Score: {bestScore}</div>
+        </div>
         <button onClick={resetAll}>Reset Scores</button>
       </div>
       <div className="card-container">
