@@ -12,7 +12,7 @@ function List() {
 
     console.log("fetching list of all people");
     fetch(
-      `https://starwars-databank-server.vercel.app/api/v1/characters?page=${rand}&limit=2`
+      `https://starwars-databank-server.vercel.app/api/v1/characters?page=${rand}&limit=12`
     )
       .then((response) => response.json())
       .then((json) =>
@@ -23,6 +23,16 @@ function List() {
 
   function handleClick(personId) {
     peopleList.filter((p) => p._id === personId)[0].isClicked = true;
+    reorderList();
+  }
+
+  function reorderList() {
+    const updatedList = [...peopleList];
+    for (let i = updatedList.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [updatedList[i], updatedList[j]] = [updatedList[j], updatedList[i]];
+    }
+    setPeopleList(updatedList);
   }
 
   return (
