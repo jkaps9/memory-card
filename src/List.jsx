@@ -36,13 +36,19 @@ function List() {
   }
 
   return (
-    <div className="card-container">
-      {peopleList
-        ? peopleList.map((person) => (
-            <Card person={person} setClicked={handleClick} key={person._id} />
-          ))
-        : "Loading..."}
-    </div>
+    <>
+      <div className="score-container">
+        <div>Score: {currentScore}</div>
+        <div>Best Score: {bestScore}</div>
+      </div>
+      <div className="card-container">
+        {peopleList
+          ? peopleList.map((person) => (
+              <Card person={person} setClicked={handleClick} key={person._id} />
+            ))
+          : "Loading..."}
+      </div>
+    </>
   );
 }
 
