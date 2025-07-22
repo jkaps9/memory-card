@@ -32,7 +32,7 @@ function List() {
         setBestScore(currentScore);
       }
       setCurrentScore(0);
-      resetList();
+      resetList;
     }
   }
 
@@ -51,11 +51,18 @@ function List() {
     setPeopleList(updatedList);
   }
 
+  function resetAll() {
+    resetList;
+    setCurrentScore(0);
+    setBestScore(0);
+  }
+
   return (
     <>
       <div className="score-container">
         <div>Score: {currentScore}</div>
         <div>Best Score: {bestScore}</div>
+        <button onClick={resetAll}>Reset Scores</button>
       </div>
       <div className="card-container">
         {peopleList
