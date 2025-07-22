@@ -22,8 +22,18 @@ function List() {
   }, []);
 
   function handleClick(personId) {
-    peopleList.filter((p) => p._id === personId)[0].isClicked = true;
-    reorderList();
+    const person = peopleList.filter((p) => p._id === personId)[0];
+    if (!person.isClicked) {
+      person.isClicked = true;
+      reorderList();
+      setCurrentScore(currentScore + 1);
+    } else {
+      if (currentScore > bestScore) {
+        setBestScore(currentScore);
+      }
+      setCurrentScore(0);
+      resetList();
+    }
   }
 
   function reorderList() {
@@ -32,6 +42,12 @@ function List() {
       const j = Math.floor(Math.random() * (i + 1));
       [updatedList[i], updatedList[j]] = [updatedList[j], updatedList[i]];
     }
+    setPeopleList(updatedList);
+  }
+
+  function resetList() {
+    const updatedList = [...peopleList];
+    updatedList.map((item) => (item.isClicked = false));
     setPeopleList(updatedList);
   }
 
