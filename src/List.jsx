@@ -17,7 +17,7 @@ function List() {
 
     console.log("fetching list of all people");
     fetch(
-      "https://starwars-databank-server.vercel.app/api/v1/characters?page=1&limit=952"
+      "https://starwars-databank-server.vercel.app/api/v1/characters?page=1&limit=12"
     )
       .then((response) => response.json())
       .then((json) => setPeopleList(json.data))
@@ -27,9 +27,7 @@ function List() {
   return (
     <div className="card-container">
       {peopleList
-        ? peopleList.map((person) => (
-            <Card imgUrl={person.image} name={person.name} key={person._id} />
-          ))
+        ? peopleList.map((person) => <Card person={person} key={person._id} />)
         : "Loading..."}
     </div>
   );

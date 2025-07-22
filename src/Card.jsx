@@ -1,11 +1,18 @@
 import { useState, useEffect } from "react";
 import "./styles/Card.css";
 
-function Card({ name }) {
+function Card({ person }) {
   return (
     <div className="card">
-      <div className="imgPlaceholder"></div>
-      <p>{name}</p>
+      <div className="imgPlaceholder">
+        <img
+          src={person.image}
+          alt={person.name}
+          width="100%"
+          height="100%"
+        ></img>
+      </div>
+      <p>{person.name}</p>
     </div>
   );
 }
