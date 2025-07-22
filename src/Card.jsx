@@ -9,7 +9,6 @@ function Card({ person, setClicked }) {
         style={{ backgroundImage: `url(${person.image})` }}
       ></div>
       <p>{person.name}</p>
-      <p>{`${person.isClicked}`}</p>
     </div>
   );
 }
