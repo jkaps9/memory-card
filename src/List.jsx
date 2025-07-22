@@ -6,18 +6,11 @@ function List() {
   const [peopleList, setPeopleList] = useState(null);
 
   useEffect(() => {
-    let randNumbers = [];
-
-    while (randNumbers.length < 12) {
-      let rand = Math.floor(Math.random() * 952);
-      if (randNumbers.indexOf(rand) < 0) {
-        randNumbers.push(rand);
-      }
-    }
+    let rand = Math.floor(Math.random() * (952 / 12)) + 1;
 
     console.log("fetching list of all people");
     fetch(
-      "https://starwars-databank-server.vercel.app/api/v1/characters?page=1&limit=12"
+      `https://starwars-databank-server.vercel.app/api/v1/characters?page=${rand}&limit=12`
     )
       .then((response) => response.json())
       .then((json) => setPeopleList(json.data))
