@@ -7,6 +7,7 @@ function List() {
   const [peopleList, setPeopleList] = useState(null);
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   useEffect(() => {
     let rand = Math.floor(Math.random() * (952 / 12)) + 1;
@@ -29,12 +30,18 @@ function List() {
       reorderList();
       setCurrentScore(currentScore + 1);
     } else {
-      if (currentScore > bestScore) {
-        setBestScore(currentScore);
-      }
-      setCurrentScore(0);
-      resetList();
+      setIsPlaying(false);
     }
+  }
+
+  function playAgainClick() {
+    if (currentScore > bestScore) {
+      setBestScore(currentScore);
+    }
+    setCurrentScore(0);
+    resetList();
+    reorderList();
+    setIsPlaying(true);
   }
 
   function reorderList() {
@@ -54,6 +61,7 @@ function List() {
 
   function resetAll() {
     resetList();
+    reorderList();
     setCurrentScore(0);
     setBestScore(0);
   }
@@ -73,26 +81,30 @@ function List() {
               <Card person={person} setClicked={handleClick} key={person._id} />
             ))
           : "Loading..."}
-        <div className="game-over-modal">
-          <h3>Game Over</h3>
-          {currentScore === peopleList.length ? (
-            <>
-              <p>You got them all!</p>
-              <p>The Force will be with you always!</p>
-            </>
-          ) : currentScore > bestScore ? (
-            <>
-              <p>You beat your best score.</p>
-              <p>Great, kid! Don't get cocky.</p>
-            </>
-          ) : (
-            <>
-              <p>You didn't beat your best score.</p>
-              <p>Do or do not. There is no try.</p>
-            </>
-          )}
-          <button>Play Again</button>
-        </div>
+        {isPlaying ? (
+          <></>
+        ) : (
+          <div className="game-over-modal">
+            <h3>Game Over</h3>
+            {currentScore === peopleList.length ? (
+              <>
+                <p>You got them all!</p>
+                <p>The Force will be with you always!</p>
+              </>
+            ) : currentScore > bestScore ? (
+              <>
+                <p>You beat your best score.</p>
+                <p>Great, kid! Don't get cocky.</p>
+              </>
+            ) : (
+              <>
+                <p>You didn't beat your best score.</p>
+                <p>Do or do not. There is no try.</p>
+              </>
+            )}
+            <button onClick={playAgainClick}>Play Again</button>
+          </div>
+        )}
       </div>
     </>
   );
