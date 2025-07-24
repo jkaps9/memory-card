@@ -72,6 +72,17 @@ function List() {
               <Card person={person} setClicked={handleClick} key={person._id} />
             ))
           : "Loading..."}
+        <div className="game-over-modal">
+          <p>Game Over</p>
+          <p>
+            {currentScore === peopleList.length
+              ? "You got them all! The Force will be with you always!"
+              : currentScore > bestScore
+              ? "You beat your best score. Great, kid! Don't get cocky."
+              : "You didn't beat your best score. Do or do not. There is no try."}
+          </p>
+          <button>Play Again</button>
+        </div>
       </div>
     </>
   );
