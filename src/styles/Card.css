@@ -8,6 +8,7 @@
 }
 
 .card-container {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));
   justify-items: center;

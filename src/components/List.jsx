@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 // import allPeople from "./assets/data.json";
 import Card from "./Card";
+import "../styles/Modal.css";
 
 function List() {
   const [peopleList, setPeopleList] = useState(null);
@@ -73,14 +74,23 @@ function List() {
             ))
           : "Loading..."}
         <div className="game-over-modal">
-          <p>Game Over</p>
-          <p>
-            {currentScore === peopleList.length
-              ? "You got them all! The Force will be with you always!"
-              : currentScore > bestScore
-              ? "You beat your best score. Great, kid! Don't get cocky."
-              : "You didn't beat your best score. Do or do not. There is no try."}
-          </p>
+          <h3>Game Over</h3>
+          {currentScore === peopleList.length ? (
+            <>
+              <p>You got them all!</p>
+              <p>The Force will be with you always!</p>
+            </>
+          ) : currentScore > bestScore ? (
+            <>
+              <p>You beat your best score.</p>
+              <p>Great, kid! Don't get cocky.</p>
+            </>
+          ) : (
+            <>
+              <p>You didn't beat your best score.</p>
+              <p>Do or do not. There is no try.</p>
+            </>
+          )}
           <button>Play Again</button>
         </div>
       </div>
