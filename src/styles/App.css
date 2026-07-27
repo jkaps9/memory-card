@@ -1,10 +1,14 @@
 #root {
-  max-width: 1000px;
-  width: 100%;
+  height: stretch;
   margin: 0 auto;
+  max-width: 1000px;
   text-align: center;
+  width: 100%;
 }
 
+main {
+  margin-block: clamp(2rem, 1.2958rem + 3.0047vw, 4rem);
+}
 .read-the-docs {
   color: #888;
 }

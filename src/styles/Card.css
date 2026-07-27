@@ -39,11 +39,11 @@
 }
 
 .score-container {
-  margin: 12px 0 24px;
+  margin: 0.75rem 0 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 36px;
+  gap: 2.25rem;
 
   button {
     background-color: var(--color-off-white);
@@ -55,4 +55,12 @@
     background-color: var(--color-pale-orange);
     color: var(--color-off-white);
   }
+}
+
+.top {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  margin-block: 2rem;
+  text-align: start;
 }

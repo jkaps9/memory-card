@@ -8,11 +8,6 @@ function App() {
       <Header></Header>
       <main>
         <section id="game">
-          <h1>Memory Game</h1>
-          <p>
-            Select a card to get a point, but don&apos;t select the same one
-            twice
-          </p>
           <List />
         </section>
       </main>

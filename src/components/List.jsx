@@ -68,12 +68,21 @@ function List() {
 
   return (
     <>
-      <div className="score-container">
-        <div style={{ textAlign: "start" }}>
-          <div>Score: {currentScore}</div>
-          <div>Best Score: {bestScore}</div>
+      <div className="top">
+        <div>
+          <h1>How to Play</h1>
+          <p>
+            Select a card to get a point, but don&apos;t select the same one
+            twice
+          </p>
         </div>
-        <button onClick={resetAll}>Reset Scores</button>
+        <div className="score-container">
+          <div style={{ textAlign: "start" }}>
+            <div>Score: {currentScore}</div>
+            <div>Best Score: {bestScore}</div>
+          </div>
+          <button onClick={resetAll}>Reset Scores</button>
+        </div>
       </div>
       <div className="card-container">
         {peopleList
