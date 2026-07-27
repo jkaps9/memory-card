@@ -14,11 +14,11 @@ function List() {
 
     console.log("fetching list of all people");
     fetch(
-      `https://starwars-databank-server.vercel.app/api/v1/characters?page=${rand}&limit=12`
+      `https://starwars-databank-server.onrender.com/api/v1/characters?page=${rand}&limit=12`,
     )
       .then((response) => response.json())
       .then((json) =>
-        setPeopleList(json.data.map((obj) => ({ ...obj, isClicked: false })))
+        setPeopleList(json.data.map((obj) => ({ ...obj, isClicked: false }))),
       )
       .catch((error) => console.error(error));
   }, []);
